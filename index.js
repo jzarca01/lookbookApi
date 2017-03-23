@@ -17,8 +17,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/top', (req, res) => {
-    var stream = Lookbook.getLooks('top');
+app.get('/top/:place', (req, res) => {
+    var stream = Lookbook.getLooks('top', req.params.place);
+    stream.pipe(res);
+});
+
+app.get('/hot/:place', (req, res) => {
+    var stream = Lookbook.getLooks('hot', req.params.place);
+    stream.pipe(res);
+});
+
+app.get('/new/:place', (req, res) => {
+    var stream = Lookbook.getLooks('new', req.params.place);
     stream.pipe(res);
 });
 
