@@ -18,17 +18,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/top/:place', (req, res) => {
-    var stream = Lookbook.getLooks('top', req.params.place);
+    var stream = Lookbook.getLooks('top', req.params.place, req.query.gender);
     stream.pipe(res);
 });
 
 app.get('/hot/:place', (req, res) => {
-    var stream = Lookbook.getLooks('hot', req.params.place);
+    var stream = Lookbook.getLooks('hot', req.params.place, req.query.gender);
     stream.pipe(res);
 });
 
 app.get('/new/:place', (req, res) => {
-    var stream = Lookbook.getLooks('new', req.params.place);
+    var stream = Lookbook.getLooks('new', req.params.place, req.query.gender);
     stream.pipe(res);
 });
 
