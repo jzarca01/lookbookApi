@@ -44,10 +44,20 @@ app.get('/new/:place', (req, res) => {
 
 
 app.get('/look/:id', (req, res) => {
-    console.log(req);
     var stream = Lookbook.getLook(req.params.id);
     stream.pipe(res);
 });
+
+
+app.get('/categories/:type', (req, res) => {
+    var stream = Lookbook.getCategories(req.params.type);
+    stream.pipe(res);
+})
+
+app.get('/category/:type', (req, res) => {
+    var stream = Lookbook.getLooksInCategory(req.params.type, req.query.gender);
+    stream.pipe(res);
+})
 
 // spin spin sugar
 app.listen(app.get('port'), () => {
