@@ -59,6 +59,16 @@ app.get('/category/:type', (req, res) => {
     stream.pipe(res);
 })
 
+app.get('/brand/:name', (req, res) => {
+    var stream = Lookbook.getBrand(req.params.name);
+    stream.pipe(res);
+})
+
+app.get('/user/:id', (req, res) => {
+    var stream = Lookbook.getUser(req.params.id);
+    stream.pipe(res);
+})
+
 // spin spin sugar
 app.listen(app.get('port'), () => {
   console.log('running on port', app.get('port'))
