@@ -16,7 +16,7 @@ app.get('/top', (req, res) => {
 });
 
 app.get('/top/:place', (req, res) => {
-    var stream = Lookbook.getLooks('top', req.params.place, req.query.gender);
+    var stream = Lookbook.getLooks('top', req.query.gender, req.params.place);
     stream.pipe(res);
 });
 
@@ -27,7 +27,7 @@ app.get('/hot', (req, res) => {
 });
 
 app.get('/hot/:place', (req, res) => {
-    var stream = Lookbook.getLooks('hot', req.params.place, req.query.gender);
+    var stream = Lookbook.getLooks('hot', req.query.gender, req.params.place);
     stream.pipe(res);
 });
 
@@ -38,7 +38,7 @@ app.get('/new', (req, res) => {
 });
 
 app.get('/new/:place', (req, res) => {
-    var stream = Lookbook.getLooks('new', req.params.place, req.query.gender);
+    var stream = Lookbook.getLooks('new', req.query.gender, req.params.place);
     stream.pipe(res);
 });
 
